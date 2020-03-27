@@ -10,7 +10,10 @@ const morgan = require('morgan');
 const port = process.env.PORT || 4000;
 const admin = require("firebase-admin");
 
-
+admin.initializeApp({
+  credential: admin.credential.applicationDefault(),
+  databaseURL: 'https://rru-connect-epeevr.firebaseio.com'
+});
 
 
 // Import the appropriate class
@@ -46,13 +49,7 @@ app.post('/webhook', (req, res) => {
 
   //Function Location
   function location(agent) {
-    return admin.firestore().collection('Registration').doc('Topic').collection('ระยะเวลาการศึกษาระดับปริญญาตรี').doc('ระยะเวลาการศึกษาระดับปริญญาตรี').collection('หลักสูตรปริญญาตรี 5 ปี').orderBy("date", "desc").limit(1).get().then((snapshot) => {
-      snapshot.forEach(doc => {
-          agent.add("สำหรับระยะเวลาในการศึกษา 5 ปี\n" + doc.data().description);
-          agent.add(payload่json); //แสดง paylaod
-
-      });
-  });
+    agent.add('Welcome to Thailand.');
   }
 
   // Run the proper function handler based on the matched Dialogflow intent name
