@@ -10,10 +10,7 @@ const morgan = require('morgan');
 const port = process.env.PORT || 4000;
 const admin = require("firebase-admin");
 
-admin.initializeApp({
-  credential: admin.credential.applicationDefault(),
-  databaseURL: 'https://rru-connect-epeevr.firebaseio.com'
-});
+
 
 
 // Import the appropriate class
